@@ -40,7 +40,6 @@ class Scanner:
                         exploits = ', '.join(exploits)
                         out_for_table = [port['portid'], port['state'], port['service']['name'], port['service']['product'], port['service']['version'], port['service']['ostype'], exploits]
                     except:
-                        print("Caiu no Except")
                         out_for_table = [port['portid'], port['state'], port['service']['name'], "None", "None", "None"]
 
                     table_output.append(out_for_table)
@@ -49,12 +48,7 @@ class Scanner:
             
             except:
                 continue
-            
-            break
 
-    def findExploits(self, name):
-        exploits = exploitdb_search(name)
-        #print(exploits)  
           
     def subdomainScan(self):
         subdomains_found = self.nmap.nmap_dns_brute_script(self.domain)
