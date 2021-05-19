@@ -1,0 +1,6 @@
+python3 -m pip install googlesearch-python
+python3 -m pip install numpy
+python3 -m pip install tabulate
+python3 -m pip install colorama
+python3 -m pip install python3-nmap
+python3 -m pip install elasticsearch
