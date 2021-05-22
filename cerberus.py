@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 __author__ = "Tom"
 
 import nmap3
@@ -95,12 +97,7 @@ def main():
 
     #ADD OPTIONS TO TERMINAL
     parser.add_argument("-sS", "--syn", help="Requires site domain")
-    parser.add_argument("-sT", "--tcp", help="Requires site domain")
-    parser.add_argument("-sU", "--udp", help="Requires site domain, only works with subdomains parameter")
-    parser.add_argument("-o", "--opsys", help="Requires site domain, only works with subdomains parameter")
     parser.add_argument("-s", "--subdomain", help="Requires site domain, only works with subdomains parameter")
-    parser.add_argument("-sV", "--version", help="Requires site domain, only works with subdomains parameter")
-    parser.add_argument("-f", "--firewall", help="Requires site domain, only works with subdomains parameter")
 
     #PARSE PASSED ARGS
     args = parser.parse_args()
