@@ -6,6 +6,7 @@ from colorama import init, Fore, Back, Style
 from datetime import datetime
 from tabulate import tabulate
 from googlesearch import search
+import re
 
 ##########################################################################################
 
@@ -52,12 +53,23 @@ class Scanner:
           
     def subdomainScan(self):
         subdomains_found = self.nmap.nmap_dns_brute_script(self.domain)
+        count = 0
         
         for subdomain in subdomains_found:
+            is_ip4 = re.findall(r"^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$", subdomain['address'])
+            
+            if len(is_ip4) == 0:
+                subdomains_found.pop(count)
+                count += 1
+                continue
+            
             print(Fore.GREEN + "[+] " + "Discovered subdomain:", subdomain['hostname'], " | IP: ", subdomain['address'])
-            self.final = subdomains_found
+            count += 1
+
+        self.final = subdomains_found
+        
         print("\n")
-        return 0
+
 
     def forEachSubdomain(self, function):
         for subdomains in self.final:

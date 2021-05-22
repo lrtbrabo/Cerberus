@@ -4,3 +4,4 @@ tabulate
 colorama
 python3-nmap
 elasticsearch
+re
